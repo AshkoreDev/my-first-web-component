@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #070c24;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+body::-webkit-scrollbar {
+  width: 4px;
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 4px;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  margin: 30px auto 20px;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: white;
+}
+
+first-card {
+  --background-imgAndButton-color: #5a6cb2;
+  --color-text-button: white;
+  /* --font-family */
+}
