@@ -8,7 +8,6 @@ class firstCard extends HTMLElement {
 
   static get observedAttributes() {
     return ['img', 'alt', 'mark', 'titlename', 'subtitle', 'description', 'price'];
-    
   }
 
   attributeChangedCallback(attr, oldVal, newVal) {
@@ -63,14 +62,14 @@ class firstCard extends HTMLElement {
     return `
     <style>
       :host {
-        --background-imgAndButton-color: lightblue;
-        --color-text-button: black;
+        --card-color: lightblue;
+        --text-color: black;
         --font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
       }
 
       article {
         width: 300px;
-        margin: 5px auto;
+        margin: 30px auto 0;
         position: relative;
         font-family: var(--font-family);
         background-color: white;
@@ -82,7 +81,7 @@ class firstCard extends HTMLElement {
         margin: 0;
         text-align: center;
         box-sizing: border-box;
-        background-color: var(--background-imgAndButton-color);
+        background-color: var(--card-color);
       }
 
       figure::before {
@@ -149,8 +148,8 @@ class firstCard extends HTMLElement {
         font-weight: bold;
         border-radius: 5px;
         cursor: pointer;
-        color: var(--color-text-button);
-        background-color: var(--background-imgAndButton-color);
+        color: var(--text-color);
+        background-color: var(--card-color);
       }   
 
        @media (min-width: 768px) {
@@ -180,11 +179,12 @@ class firstCard extends HTMLElement {
         }
        }
       
-       @media (min-width: 1080px) {
+       @media (min-width: 1024px) {
         article {
-          display: flex;
           width: 900px;
           height: 550px;
+          margin: 0 auto;
+          display: flex;
         }
 
         figure {
@@ -227,6 +227,12 @@ class firstCard extends HTMLElement {
           font-size: 35px;
         }
        } 
+
+       @media (hover: hover) {
+        button:hover {
+          opacity: .6;
+        }
+       }
     </style>
     `;
   }

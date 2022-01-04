@@ -14,11 +14,6 @@ body::-webkit-scrollbar {
   overflow: hidden;
 }
 
-body::-webkit-scrollbar-thumb {
-  background: white;
-  border-radius: 4px;
-}
-
 .container {
   height: 100vh;
   display: flex;
@@ -27,15 +22,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 footer {
-  margin: 30px auto 20px;
-  font-size: 16px;
-  letter-spacing: 1.5px;
+  margin: 40px auto 10px;
+  letter-spacing: 1.2px;
   text-align: center;
   color: white;
 }
 
 first-card {
-  --background-imgAndButton-color: #5a6cb2;
-  --color-text-button: white;
-  /* --font-family */
+  --card-color: #5a6cb2;
+  --text-color: white;
 }
