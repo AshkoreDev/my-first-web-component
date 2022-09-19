@@ -1,0 +1,1 @@
+import { FirstCard } from './js/card.js';
