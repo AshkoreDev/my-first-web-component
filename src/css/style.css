@@ -27,22 +27,37 @@ first-card {
 }
 
 /* FOTTER */
-.footer__container {
-  padding: 10px 0;
-  font-size: 18px;
-  text-align: center;
-  color: var(--white);
+footer {
+	margin-top: 40px;
+	padding: 10px;
+	text-align: center;
+	color: var(--black);
+}
+
+.footer__socialMedia {
+	margin-bottom: 20px;
+}
+
+.footer__socialMedia--icon {
+	padding-bottom: 5px;
+	border-bottom: 1px solid transparent;
+}
+
+.footer__socialMedia--icon img {
+	width: 30px;
+	height: 30px;
+}
+
+.footer__socialMedia--icon:nth-child(2) {
+	margin: 0 10px;
 }
 
 .footer__info {
-  margin: 20px auto;
-  letter-spacing: 1.5px;
-  background-color: white;
+	font-size: 18px;
 }
 
-.footer__info--item {
-  margin: 0 15px;
-  padding-bottom: 5px;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
+@media (hover: hover) {
+	.footer__socialMedia--icon:hover {
+		border-color: var(--black);
+	}
 }
