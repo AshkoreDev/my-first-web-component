@@ -31,7 +31,7 @@ footer {
 	margin-top: 40px;
 	padding: 10px;
 	text-align: center;
-	color: var(--black);
+	color: white;
 }
 
 .footer__socialMedia {
@@ -58,6 +58,6 @@ footer {
 
 @media (hover: hover) {
 	.footer__socialMedia--icon:hover {
-		border-color: var(--black);
+		border-color: white;
 	}
 }
