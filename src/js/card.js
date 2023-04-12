@@ -1,63 +1,69 @@
 class FirstCard extends HTMLElement {
-    constructor() {
-      super();
-      this.attachShadow({ mode: 'open' });
+
+  constructor() {
+
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
+  static get observedAttributes() {
+
+    return ['img', 'alt', 'mark', 'titlename', 'subtitle', 'description', 'price'];
+  }
+
+  attributeChangedCallback(attr, oldVal, newVal) {
+
+    if(attr === 'img' && oldVal !== newVal) {
+      this.img = newVal
     }
-
-    static get observedAttributes() {
-      return ['img', 'alt', 'mark', 'titlename', 'subtitle', 'description', 'price'];
+    if(attr === 'alt' && oldVal !== newVal) {
+      this.alt = newVal
     }
-
-    attributeChangedCallback(attr, oldVal, newVal) {
-      if(attr === 'img' && oldVal !== newVal) {
-        this.img = newVal
-      }
-      if(attr === 'alt' && oldVal !== newVal) {
-        this.alt = newVal
-      }
-      if(attr === 'mark' && oldVal !== newVal) {
-        this.mark = newVal
-      }
-      if(attr === 'titlename' && oldVal !== newVal) {
-        this.titlename = newVal
-      }
-      if(attr === 'subtitle' && oldVal !== newVal) {
-        this.subtitle = newVal
-      }
-      if(attr === 'description' && oldVal !== newVal) {
-        this.description = newVal
-      }
-      if(attr === 'price' && oldVal !== newVal) {
-        this.price = newVal
-      }
+    if(attr === 'mark' && oldVal !== newVal) {
+      this.mark = newVal
     }
+    if(attr === 'titlename' && oldVal !== newVal) {
+      this.titlename = newVal
+    }
+    if(attr === 'subtitle' && oldVal !== newVal) {
+      this.subtitle = newVal
+    }
+    if(attr === 'description' && oldVal !== newVal) {
+      this.description = newVal
+    }
+    if(attr === 'price' && oldVal !== newVal) {
+      this.price = newVal
+    }
+  }
 
-    getTemplate() {
-      const template = document.createElement('template');
-      template.innerHTML = `
-        <article>
-          <figure>
-            <img src="${this.img}" alt="${this.alt}"/>
-          </figure>
+  getTemplate() {
 
-          <div class="text-container">
-            <h2>${this.titlename}</h2>
-            <h5>${this.subtitle}</h5>
-            <p>${this.description}</p>
-            <div class="sub-container">
-              <h3>${this.price}</h3>
-              <button>Comprar</button>
-            </div>
+    const template = document.createElement('template');
+
+    template.innerHTML = `
+      <article>
+        <figure>
+          <img src="${this.img}" alt="${this.alt}" width="300"/>
+        </figure>
+
+        <div class="text-container">
+          <h2>${this.titlename}</h2>
+          <h3>${this.subtitle}</h3>
+          <p>${this.description}</p>
+          <div class="sub-container">
+            <h4>${this.price}</h4>
+            <button>Comprar</button>
           </div>
-        </article>
+        </div>
+      </article>
 
-        ${this.getStyle()}
-      `;
-      return template;
-    }
+      ${this.getStyle()}
+    `;
+    return template;
+  }
 
-    getStyle() {
-      return `
+  getStyle() {
+    return `
       <style>
         :host {
           --card-color: lightblue;
@@ -74,26 +80,27 @@ class FirstCard extends HTMLElement {
         article {
           width: 300px;
           margin: 30px auto 0;
-          position: relative;
           font-family: var(--font-family);
+          position: relative;
           background-color: white;
         }
 
         figure {
+          width: 300px;
           height: 200px;
           margin: 0;
-          position: relative;
           text-align: center;
+          position: relative;
           background-color: var(--card-color);
         }
 
         figure::before {
           content: '${this.mark}';
+          font-size: 5em;
+          font-weight: 800;
           position: absolute;
           top: 10px;
           left: 10px;
-          font-size: 5em;
-          font-weight: 800;
           opacity: 0.1;
         }
 
@@ -116,18 +123,18 @@ class FirstCard extends HTMLElement {
           letter-spacing: 1.4px;
         }
 
-        h5 {
+        h3 {
           margin: 0px auto 20px;
+          color: #585858;
           font-size: 15px;
           letter-spacing: 1.4px;
           text-transform: uppercase;
-          color: #999;
         }
 
         p {
+          color: #333;
           font-size: 15px;
           line-height: 1.4em;
-          color: #333;
         }
 
         .sub-container {
@@ -137,20 +144,20 @@ class FirstCard extends HTMLElement {
           justify-content: space-between;
         }
 
-        .sub-container > h3 {
+        .sub-container > h4 {
+          color: #585858;
           font-size: 25px;
-          color: #999;
         }
 
         .sub-container > button {
           padding: 10px;
+          color: var(--text-color);
           font-size: 16px;
+          font-weight: bold;
           letter-spacing: 1.4px;
           text-transform: uppercase;
-          font-weight: bold;
           border-radius: 5px;
           cursor: pointer;
-          color: var(--text-color);
           background-color: var(--card-color);
         }
 
@@ -216,8 +223,7 @@ class FirstCard extends HTMLElement {
           }
 
           p {
-            margin-top: 50px;
-            margin-left: 25px;
+            margin: 50px 0 0 25px;
             font-size: 18px;
           }
 
@@ -236,18 +242,20 @@ class FirstCard extends HTMLElement {
           }
          }
       </style>
-      `;
-    }
-
-    render() {
-      this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
-    }
-
-    connectedCallback() {
-      this.render();
-    }
+    `;
   }
 
-  customElements.define('first-card', FirstCard);
+  render() {
 
-  export { FirstCard };
+    this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
+  }
+
+  connectedCallback() {
+
+    this.render();
+  }
+}
+
+customElements.define('first-card', FirstCard);
+
+export { FirstCard };
